@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://6wghskmxq1ca"]
 
 [ext_resource type="PackedScene" uid="uid://dxymp3vxvi7lk" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://nkmf6ky1v7em" path="res://scenes/Pickable.cs" id="2_yqjtg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwrxv"]
+radius = 11.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 distance = -2.0
@@ -8,13 +12,30 @@ distance = -2.0
 [node name="Game" type="Node2D" unique_id=450958793]
 
 [node name="Player" parent="." unique_id=1435091502 instance=ExtResource("1_uwrxv")]
-position = Vector2(4, -4)
+position = Vector2(-13, -4)
+
+[node name="Area2D" type="Area2D" parent="Player" unique_id=314010128]
+
+[node name="Range" type="CollisionShape2D" parent="Player/Area2D" unique_id=468908441]
+shape = SubResource("CircleShape2D_uwrxv")
+
+[node name="handposition" type="Marker2D" parent="Player" unique_id=601333406]
+position = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1172445429]
-position = Vector2(4, -4)
+position = Vector2(0, -17)
 zoom = Vector2(4, 4)
+
+[node name="Pickable" parent="." unique_id=1324112524 instance=ExtResource("1_uwrxv")]
+modulate = Color(0.8965528, 0.61264557, 0.49746996, 1)
+self_modulate = Color(0.85082, 0.93698, 0.51130307, 1)
+position = Vector2(70, -4)
+script = ExtResource("2_yqjtg")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1425028359]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1712229317]
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_area_2d_body_exited"]
