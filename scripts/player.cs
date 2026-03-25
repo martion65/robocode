@@ -55,11 +55,11 @@ public partial class player : CharacterBody2D
 	
 	private void PickupObject()
 	{
-		if (isInRange && Input.IsActionJustPressed("pickup") && heldObject == null)
+		if (isInRange && Input.IsActionJustPressed("pickup") && heldObject == null) // determines if object is in range
 		{
 			heldObject = (CharacterBody2D)targetObject;
 			
-			heldObject.Reparent(handPosition);
+			heldObject.Reparent(handPosition); //moves object to marker hand position
 			heldObject.Position = Vector2.Zero; 
 		}
 	}
@@ -68,11 +68,11 @@ public partial class player : CharacterBody2D
 	{
 		if (heldObject == null) return;
 
-		if (Input.IsActionJustPressed("drop right"))
+		if (Input.IsActionJustPressed("drop right")) //drops object ot the right of the player
 		{
 			PerformDrop(Vector2.Right * 10);
 		}
-		else if (Input.IsActionJustPressed("drop left"))
+		else if (Input.IsActionJustPressed("drop left")) //drops object to the left of the player
 		{
 			PerformDrop(Vector2.Left * 10);
 		}
@@ -86,7 +86,7 @@ public partial class player : CharacterBody2D
 	}
 
    
-	private void _on_area_2d_body_entered(Node2D body)
+	private void _on_area_2d_body_entered(Node2D body) //checks if object has entered range
 	{
 		if (body is Pickable)
 		{
@@ -95,7 +95,7 @@ public partial class player : CharacterBody2D
 		}
 	}
 
-	private void _on_area_2d_body_exited(Node2D body)
+	private void _on_area_2d_body_exited(Node2D body) //checks if objecst has exited range
 	{
 		if (body is Pickable)
 		{
