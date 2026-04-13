@@ -1,3 +1,14 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+.vs/ProjectEvaluation/robocode.projects.v10.bin
+.vs/ProjectEvaluation/robocode.strings.v10.bin
+.vs/Robocode/DesignTimeBuild/.dtbcache.v2
+.vs/Robocode/FileContentIndex/827c10b9-092f-4fec-a5d8-6b9857071320.vsidx
+.vs/Robocode/FileContentIndex/d3d83069-14f5-4a5c-bc89-51292dcc9a31.vsidx
+.vs/Robocode/FileContentIndex/ffb69c43-256a-40ed-8e9d-ccce399cd8e9.vsidx
+.vs/Robocode/v18/.futdcache.v2
+.vs/Robocode/v18/.suo
+.vs/Robocode/v18/DocumentLayout.backup.json
+.vs/Robocode/v18/DocumentLayout.json
+.vs/ProjectEvaluation/robocode.metadata.v10.bin
