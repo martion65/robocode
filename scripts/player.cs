@@ -1,28 +1,38 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 public partial class player : CharacterBody2D
 {
 	public const float Speed = 150.0f;
 	public const float JumpVelocity = -200.0f;
-	
-	private bool isInRange = false;
-	private Node2D targetObject;
-	private CharacterBody2D heldObject;
 
-	private Marker2D handPosition;
+    private Sprite2D debugSprite;
 	
-	public override void _Ready()
+	private Marker2D handPosition;
+    private bool isInRange = false;
+    private Node2D targetObject;
+    private RigidBody2D heldObject;
+
+
+
+    public override void _Ready()
 	{
-		handPosition = GetNode<Marker2D>("handposition");
+        debugSprite = GetNode<Sprite2D>("debug");
+
+		handPosition = GetNode<Marker2D>("handPosition");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		PickupObject();
-		DropObject();
-		
-		Vector2 velocity = Velocity;
+
+
+
+        PickupObject();
+        DropObject();
+
+        Vector2 velocity = Velocity;
 		
 
 		// Add the gravity.
@@ -51,56 +61,75 @@ public partial class player : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
-	}
-	
-	private void PickupObject()
-	{
-		if (isInRange && Input.IsActionJustPressed("pickup") && heldObject == null) // determines if object is in range
-		{
-			heldObject = (CharacterBody2D)targetObject;
-			
-			heldObject.Reparent(handPosition); //moves object to marker hand position
-			heldObject.Position = Vector2.Zero; 
-		}
+
+
+
 	}
 
-	private void DropObject()
-	{
-		if (heldObject == null) return;
+    private void _on_area_2d_body_entered(Node2D body) //checks if object has entered range
+    {
+        if (body.IsInGroup("Pickable"))
+        {
+            debugSprite.Visible = true;
+            isInRange = true;
+            targetObject = body;
+        }
+    }
 
-		if (Input.IsActionJustPressed("drop right")) //drops object ot the right of the player
-		{
-			PerformDrop(Vector2.Right * 10);
-		}
-		else if (Input.IsActionJustPressed("drop left")) //drops object to the left of the player
-		{
-			PerformDrop(Vector2.Left * 10);
-		}
-	}
+    private void _on_area_2d_body_exited(Node2D body) //checks if object has exited range
+    {
+        if (body.IsInGroup("Pickable"))
+        {
+            debugSprite.Visible = false;
+            isInRange = false;
+            targetObject = null;
+        }
+    }
 
-	private void PerformDrop(Vector2 offset)
-	{
-		heldObject.Reparent(GetParent());
-		heldObject.Position = Position + offset;
-		heldObject = null;
-	}
+    private void PickupObject()
+    {
 
-   
-	private void _on_area_2d_body_entered(Node2D body) //checks if object has entered range
-	{
-		if (body is Pickable)
-		{
-			isInRange = true;
-			targetObject = body;
-		}
-	}
+        
 
-	private void _on_area_2d_body_exited(Node2D body) //checks if objecst has exited range
-	{
-		if (body is Pickable)
-		{
-			isInRange = false;
-			targetObject = null;
-		}
-	}
+
+        if (Input.IsActionJustPressed("pickup") && heldObject == null && targetObject != null) // if you press the pickup button while an object is in range, and you're not already holding something:
+        {
+
+            
+
+            heldObject = (RigidBody2D)targetObject; // the object is picked up
+            heldObject.AddToGroup("Held");
+            heldObject.Reparent(handPosition); //moves object to marker hand position
+            heldObject.Position = Vector2.Zero;
+        }
+    }
+
+    private void PerformDrop(Vector2 offset)
+    {
+        heldObject.Reparent(GetParent());
+        heldObject.Position = Position + offset;
+        heldObject = null;
+    }
+
+
+    private void DropObject()
+    {
+        if (heldObject == null) return;
+
+        if (Input.IsActionJustPressed("drop right")) //drops object to the right of the player
+        {
+            heldObject.RemoveFromGroup("Held");
+            PerformDrop(Vector2.Right * 10);
+        }
+        else if (Input.IsActionJustPressed("drop left")) //drops object to the left of the player
+        {
+            heldObject.RemoveFromGroup("Held");
+            PerformDrop(Vector2.Left * 10);
+        }
+    }
+
+
+
+
 }
+

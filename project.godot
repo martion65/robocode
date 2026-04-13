@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Robocode"
 
+[global_group]
+
+Pickable="Can be picked up"
+Held="This object is currently being held by the player"
+
 [input]
 
 pickup={

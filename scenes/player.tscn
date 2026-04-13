@@ -6,14 +6,33 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3vyb7"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1435091502]
-position = Vector2(0, -4)
 script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=693507272]
-scale = Vector2(7.96, 7.96)
+scale = Vector2(8, 8)
 texture = SubResource("PlaceholderTexture2D_sh265")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551644951]
 scale = Vector2(0.375, 0.375)
 shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="handPosition" type="Marker2D" parent="." unique_id=2046180498]
+position = Vector2(0, -10)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=926410492]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1208198148]
+shape = SubResource("CircleShape2D_3vyb7")
+
+[node name="debug" type="Sprite2D" parent="." unique_id=184130950]
+visible = false
+texture = SubResource("PlaceholderTexture2D_3vyb7")
+offset = Vector2(0, -8.19)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
