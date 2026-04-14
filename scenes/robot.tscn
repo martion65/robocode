@@ -7,7 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br0rw"]
 size = Vector2(10, 10)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=1379346319 groups=["Pickable"]]
+[node name="robot" type="RigidBody2D" unique_id=1379346319 groups=["Pickable"]]
+collision_layer = 13
 script = ExtResource("1_br0rw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=831237981]

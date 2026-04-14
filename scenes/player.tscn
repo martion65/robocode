@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dxymp3vxvi7lk"]
 
 [ext_resource type="Script" uid="uid://ckonrukiarcd6" path="res://scripts/player.cs" id="1_3vyb7"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sh265"]
+[ext_resource type="Texture2D" uid="uid://ghq24uyrsy21" path="res://assets/sprite.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 
@@ -11,18 +10,20 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3vyb7"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1435091502]
+scale = Vector2(2, 2)
 script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=693507272]
-scale = Vector2(8, 8)
-texture = SubResource("PlaceholderTexture2D_sh265")
+position = Vector2(0, 0.155)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551644951]
 scale = Vector2(0.375, 0.375)
 shape = SubResource("RectangleShape2D_4flbx")
 
 [node name="handPosition" type="Marker2D" parent="." unique_id=2046180498]
-position = Vector2(0, -10)
+position = Vector2(0, -12.5)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=926410492]
 

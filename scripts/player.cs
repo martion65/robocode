@@ -98,8 +98,9 @@ public partial class player : CharacterBody2D
             
 
             heldObject = (RigidBody2D)targetObject; // the object is picked up
-            heldObject.AddToGroup("Held");
+            
             heldObject.Reparent(handPosition); //moves object to marker hand position
+            heldObject.AddToGroup("Held");
             heldObject.Position = Vector2.Zero;
         }
     }
@@ -119,16 +120,16 @@ public partial class player : CharacterBody2D
         if (Input.IsActionJustPressed("drop right")) //drops object to the right of the player
         {
             heldObject.RemoveFromGroup("Held");
-            PerformDrop(Vector2.Right * 10);
+            PerformDrop(Vector2.Right * 20);
         }
         else if (Input.IsActionJustPressed("drop left")) //drops object to the left of the player
         {
             heldObject.RemoveFromGroup("Held");
-            PerformDrop(Vector2.Left * 10);
+            PerformDrop(Vector2.Left * 20);
         }
     }
 
-
+    
 
 
 }
