@@ -2,9 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dxymp3vxvi7lk" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cdoxv36owbkuv" path="res://scenes/robot.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://bndrn6lk517xi" path="res://scenes/conveyor.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://cbiuqohx2mfyf" path="res://scenes/loop_robot.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://c8mmt2qifnswa" path="res://scenes/add_robot.tscn" id="5_iywne"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 distance = -2.0
@@ -12,29 +9,16 @@ distance = -2.0
 [node name="Game" type="Node2D" unique_id=450958793]
 
 [node name="Player" parent="." unique_id=1435091502 instance=ExtResource("1_uwrxv")]
-position = Vector2(-132, -9)
+position = Vector2(-17, -5)
+
+[node name="Robot" parent="." unique_id=1620449954 instance=ExtResource("2_yqjtg")]
+position = Vector2(22, -19)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1172445429]
 position = Vector2(0, -17)
 zoom = Vector2(4, 4)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1425028359]
-scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1712229317]
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
-
-[node name="Conveyor" parent="." unique_id=1221946976 instance=ExtResource("3_lnu2h")]
-position = Vector2(14, -9)
-
-[node name="robot" parent="." unique_id=1379346319 groups=["Print"] instance=ExtResource("2_yqjtg")]
-position = Vector2(-22, -13)
-
-[node name="robot3" parent="." unique_id=261934654 groups=["IfElse"] instance=ExtResource("2_yqjtg")]
-position = Vector2(-22, -29)
-
-[node name="loopRobot" parent="." unique_id=1182569816 instance=ExtResource("4_lbhrr")]
-position = Vector2(-62, -15)
-
-[node name="add_robot" parent="." unique_id=2050314613 instance=ExtResource("5_iywne")]
-position = Vector2(-21, -45)

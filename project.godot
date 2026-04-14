@@ -23,12 +23,6 @@ project/assembly_name="Robocode"
 
 Pickable="Can be picked up"
 Held="This object is currently being held by the player"
-Print="This robot has the 'Print' function."
-While="This robot has the 'While' function."
-IfElse="This robot has the 'If' function."
-Submitted="This object has been submitted to the conveyor belt."
-Nested="This robot is inside another robot."
-Add="This robot has the 'Add' function"
 
 [input]
 
