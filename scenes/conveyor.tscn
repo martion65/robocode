@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bndrn6lk517xi"]
+
+[ext_resource type="Script" uid="uid://cpmwo8f6euraf" path="res://scripts/conveyor.cs" id="1_kqxj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj58c"]
+size = Vector2(170, 20)
+
+[node name="Conveyor" type="Area2D" unique_id=1221946976]
+collision_mask = 4
+script = ExtResource("1_kqxj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1261160881]
+position = Vector2(75, 0)
+shape = SubResource("RectangleShape2D_rj58c")
+
+[node name="lockinButton" type="Button" parent="." unique_id=551688827]
+offset_left = -10.0
+offset_top = -95.0
+offset_right = 141.0
+offset_bottom = -64.0
+text = "LOCK IN / RELEASE"
+
+[node name="executeButton" type="Button" parent="." unique_id=893250081]
+offset_left = -8.0
+offset_top = -59.0
+offset_bottom = -51.0
+text = "EXECUTE"
+
+[node name="slotStart" type="Marker2D" parent="." unique_id=1130786263]
+position = Vector2(-5, -5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="lockinButton" to="." method="_on_lockin_pressed"]
+[connection signal="pressed" from="executeButton" to="." method="_on_execute_pressed"]
