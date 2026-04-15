@@ -12,7 +12,7 @@ collision_layer = 13
 script = ExtResource("1_br0rw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=831237981]
-position = Vector2(0, 2.3841858e-07)
+position = Vector2(0, -2.5)
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_gl0xr")
 

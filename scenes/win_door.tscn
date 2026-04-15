@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c3bnomuymhw33"]
+
+[ext_resource type="Script" uid="uid://dimlr0o28kmno" path="res://door.cs" id="1_wkfpm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68b57"]
+
+[node name="winDoor" type="RigidBody2D" unique_id=1355142929]
+script = ExtResource("1_wkfpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560231623]
+scale = Vector2(0.5, 12)
+shape = SubResource("RectangleShape2D_68b57")

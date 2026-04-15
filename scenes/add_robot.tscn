@@ -14,7 +14,7 @@ collision_layer = 13
 script = ExtResource("1_gyxop")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=831237981]
-position = Vector2(0, 2.3841858e-07)
+position = Vector2(0, -2.5)
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_gl0xr")
 
@@ -23,9 +23,9 @@ shape = SubResource("RectangleShape2D_br0rw")
 
 [node name="counterDisplay" type="Label" parent="." unique_id=568667126]
 offset_left = -7.0
-offset_top = -4.0
+offset_top = -7.095
 offset_right = 39.875
-offset_bottom = 19.0
+offset_bottom = 15.905001
 scale = Vector2(0.32, 0.32)
 text = "0"
 label_settings = SubResource("LabelSettings_gyxop")

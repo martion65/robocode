@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://6wghskmxq1ca"]
 
 [ext_resource type="PackedScene" uid="uid://dxymp3vxvi7lk" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dq6q5vlrdv1vc" path="res://assets/floor.png" id="2_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cdoxv36owbkuv" path="res://scenes/robot.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bndrn6lk517xi" path="res://scenes/conveyor.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cbiuqohx2mfyf" path="res://scenes/loop_robot.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://c8mmt2qifnswa" path="res://scenes/add_robot.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://du5pkn0x6ly2f" path="res://scenes/chute.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c3bnomuymhw33" path="res://scenes/win_door.tscn" id="8_gee14"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 distance = -2.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u5sy4"]
 
 [node name="Game" type="Node2D" unique_id=450958793]
 
@@ -17,8 +22,8 @@ scale = Vector2(3, 3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1172445429]
 position = Vector2(0, -17)
-offset = Vector2(0, -57.52)
-zoom = Vector2(2.77, 3.95)
+offset = Vector2(0, -97.355)
+zoom = Vector2(2.68, 2.68)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1425028359]
 scale = Vector2(2, 2)
@@ -26,19 +31,32 @@ scale = Vector2(2, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1712229317]
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1644804674]
+material = SubResource("CanvasItemMaterial_u5sy4")
+position = Vector2(-1, 1.475)
+scale = Vector2(0.845, 0.03)
+texture = ExtResource("2_p57ef")
+
 [node name="Conveyor" parent="." unique_id=1221946976 instance=ExtResource("3_lnu2h")]
 position = Vector2(14, -9)
 
-[node name="robot" parent="." unique_id=1379346319 groups=["Print"] instance=ExtResource("2_yqjtg")]
-position = Vector2(-27, -9)
+[node name="robot" parent="." unique_id=1379346319 groups=["Held", "Print"] instance=ExtResource("2_yqjtg")]
+position = Vector2(-91, -279)
 
-[node name="robot3" parent="." unique_id=261934654 groups=["IfElse"] instance=ExtResource("2_yqjtg")]
-position = Vector2(-8, -8)
+[node name="robot3" parent="." unique_id=261934654 groups=["Held", "IfElse"] instance=ExtResource("2_yqjtg")]
+position = Vector2(-63, -279)
 
-[node name="loopRobot" parent="." unique_id=1182569816 instance=ExtResource("4_lbhrr")]
-position = Vector2(-93, -39)
+[node name="loopRobot" parent="." unique_id=1182569816 groups=["Held"] instance=ExtResource("4_lbhrr")]
+position = Vector2(-76, -240)
 
-[node name="add_robot" parent="." unique_id=2050314613 instance=ExtResource("5_iywne")]
-position = Vector2(-49, -10)
+[node name="add_robot" parent="." unique_id=2050314613 groups=["Held"] instance=ExtResource("5_iywne")]
+position = Vector2(-77, -279)
 
-[editable path="loopRobot"]
+[node name="Chute" parent="." unique_id=2067947565 instance=ExtResource("7_u5sy4")]
+position = Vector2(-76, -247.16)
+scale = Vector2(1, 1.53)
+
+[node name="winDoor" parent="." unique_id=1355142929 instance=ExtResource("8_gee14")]
+position = Vector2(210, -120)
+
+[editable path="Chute"]

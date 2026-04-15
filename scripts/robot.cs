@@ -113,6 +113,7 @@ public partial class robot : RigidBody2D
 			SetCollisionLayerValue(3, false);
 			SetCollisionMaskValue(1, false);
 			SetCollisionLayerValue(1, false);
+			SetCollisionLayerValue(5, true);
 
 		}
 

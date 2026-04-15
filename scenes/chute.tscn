@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://du5pkn0x6ly2f"]
+
+[ext_resource type="Script" uid="uid://cji61de3hgqhx" path="res://scripts/chute.cs" id="1_4bhm1"]
+[ext_resource type="Texture2D" uid="uid://2eugfnvg5j64" path="res://assets/chute.png" id="1_x627s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1v5b"]
+
+[node name="Chute" type="Area2D" unique_id=2067947565]
+z_index = 2
+collision_mask = 17
+script = ExtResource("1_4bhm1")
+
+[node name="dropLocation" type="Marker2D" parent="." unique_id=1945428040]
+
+[node name="Button" type="Button" parent="." unique_id=88342173]
+offset_left = -136.745
+offset_top = 80.0
+offset_right = -34.744995
+offset_bottom = 111.00001
+focus_mode = 1
+focus_behavior_recursive = 1
+text = "Drop robots
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1483096964]
+texture = ExtResource("1_x627s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648020729]
+scale = Vector2(2.805, 2.805)
+shape = SubResource("RectangleShape2D_v1v5b")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_drop_pressed"]
