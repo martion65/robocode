@@ -29,12 +29,12 @@ public partial class conveyor : Area2D
 	public void _on_lockin_pressed()
 	{
 
-		if (!lockedIn)
+		if (!lockedIn) //if there aren't already robots locked into the conveyor belt
 		{
-			robotList = GetOverlappingBodies();
-			List<Node2D> sortedList = new List<Node2D>(robotList);
-			sortedList.Sort((a, b) => a.Position.X.CompareTo(b.Position.X));
-			robotList.Clear();
+			robotList = GetOverlappingBodies(); // keep track of robots inside the conveyor belt
+			List<Node2D> sortedList = new List<Node2D>(robotList); // make a temporary list to contain the positions of the robots  
+			sortedList.Sort((a, b) => a.Position.X.CompareTo(b.Position.X)); // sort the list of robots in the order they are in the world from left > right
+			robotList.Clear(); // clear out original list so we can add sorted list instead
 			foreach (Node2D node in sortedList)
 			{
 				robotList.Add(node);
@@ -46,8 +46,8 @@ public partial class conveyor : Area2D
 			foreach (Node2D robot in robotList)
 			{
 
-				robot.Reparent(slotStart);
-				robot.Position = Vector2.Zero + robot.GetIndex() * offset;
+				robot.Reparent(slotStart); 
+				robot.Position = Vector2.Zero + robot.GetIndex() * offset; //move robots into position
 
 
 				robot.AddToGroup("Submitted");
@@ -55,10 +55,10 @@ public partial class conveyor : Area2D
 				Debug.WriteLine(robot.GetGroups());
 			}
 
-			lockedIn = true;
+			lockedIn = true; //notify that the conveyor already has robots locked in
 
 		}
-		else
+		else //if there ARE already robots locked into the conveyor belt
 		{
 
 
@@ -66,8 +66,8 @@ public partial class conveyor : Area2D
 			{
 
 
-				robot.Reparent(GetParent());
-				robot.RemoveFromGroup("Submitted");
+				robot.Reparent(GetParent()); //release them
+				robot.RemoveFromGroup("Submitted"); 
 				robot.AddToGroup("Pickable");
 
 			}

@@ -5,6 +5,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdce"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0rdce"]
+
 [node name="loopRobot" type="RigidBody2D" unique_id=1379346319 groups=["Pickable", "While"]]
 collision_layer = 5
 script = ExtResource("1_0rdce")
@@ -43,6 +45,26 @@ position = Vector2(-9, -8)
 
 [node name="nestSlot2" type="Marker2D" parent="." unique_id=1558127684]
 position = Vector2(-9, 9)
+
+[node name="counterDisplay" type="Label" parent="." unique_id=1377987175]
+offset_left = -8.0
+offset_top = -29.0
+offset_right = 38.875
+offset_bottom = -6.0
+scale = Vector2(0.32, 0.32)
+text = "0"
+label_settings = SubResource("LabelSettings_0rdce")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="counterInput" type="SpinBox" parent="." unique_id=424013702]
+offset_left = -15.0
+offset_top = 12.0
+offset_right = 206.42857
+offset_bottom = 43.3
+scale = Vector2(0.14, 0.14)
+max_value = 999.0
+rounded = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="ejectButton" to="." method="_on_eject_button_pressed"]

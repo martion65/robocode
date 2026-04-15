@@ -12,11 +12,13 @@ distance = -2.0
 [node name="Game" type="Node2D" unique_id=450958793]
 
 [node name="Player" parent="." unique_id=1435091502 instance=ExtResource("1_uwrxv")]
-position = Vector2(-132, -9)
+position = Vector2(-172, -45.000004)
+scale = Vector2(3, 3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1172445429]
 position = Vector2(0, -17)
-zoom = Vector2(4, 4)
+offset = Vector2(0, -57.52)
+zoom = Vector2(2.77, 3.95)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1425028359]
 scale = Vector2(2, 2)
@@ -28,13 +30,15 @@ shape = SubResource("WorldBoundaryShape2D_yqjtg")
 position = Vector2(14, -9)
 
 [node name="robot" parent="." unique_id=1379346319 groups=["Print"] instance=ExtResource("2_yqjtg")]
-position = Vector2(-22, -13)
+position = Vector2(-27, -9)
 
 [node name="robot3" parent="." unique_id=261934654 groups=["IfElse"] instance=ExtResource("2_yqjtg")]
-position = Vector2(-22, -29)
+position = Vector2(-8, -8)
 
 [node name="loopRobot" parent="." unique_id=1182569816 instance=ExtResource("4_lbhrr")]
-position = Vector2(-62, -15)
+position = Vector2(-93, -39)
 
 [node name="add_robot" parent="." unique_id=2050314613 instance=ExtResource("5_iywne")]
-position = Vector2(-21, -45)
+position = Vector2(-49, -10)
+
+[editable path="loopRobot"]
